@@ -25,9 +25,7 @@ app.listen(3000);
 let users = [];
 let messages = [];
 
-client.on('error', error => {
-    console.log(error)
-})
+client.subscribe('notification-channel');
 
 io.on('connection', socket => {
     client.on('message', function(channel, data) {
