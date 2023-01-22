@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
             ]);
 
             Redis::publish('notification-channel', json_encode(['name' => 'system', 'message' => 'auto notification']));
-        })->everyMinute();
+        })->hourly();
     }
 
     /**
