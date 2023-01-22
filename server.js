@@ -25,7 +25,7 @@ app.listen(3000);
 let users = [];
 let messages = [];
 io.on('connection', socket => {
-    client.on('messages', function(channel, data) {
+    client.on('message', function(channel, data) {
         console.log(`channel: ${channel} message: ${data}`);
 
         io.emit(channel, data);
