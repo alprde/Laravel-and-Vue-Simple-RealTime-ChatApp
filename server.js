@@ -21,18 +21,26 @@ const io = require('socket.io')(app, {
 const redis = require('redis');
 const client = redis.createClient();
 
+const subscriber = client.duplicate();
+
+await subscriber.connect();
+
 app.listen(3000);
 let users = [];
 let messages = [];
 
-client.subscribe('notification-channel');
+await subscriber.subscribe('notification-channel', (message) => {
+    console.log(message); // 'message'
+});
+
+// client.on('message', function(channel, data) {
+//     console.log(`channel: ${channel} message: ${data}`);
+//
+//     io.emit(channel, data);
+// });
 
 io.on('connection', socket => {
-    client.on('message', function(channel, data) {
-        console.log(`channel: ${channel} message: ${data}`);
 
-        io.emit(channel, data);
-    });
 
     socket.on('new_user', (name) => {
         users.push({
