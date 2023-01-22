@@ -15,8 +15,6 @@ Route::get('/', 'MessageController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::prefix('messages')->group(function(){
     Route::resource('/', 'MessageController');
     Route::get('/all', 'MessageController@all')->name('all_messages');
