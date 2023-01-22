@@ -26,6 +26,8 @@ let users = [];
 let messages = [];
 io.on('connection', socket => {
     client.on('notification-channel', function(channel, data) {
+        console.log(`channel: ${channel} message: ${data}`);
+
         io.emit(channel, data);
     });
 
