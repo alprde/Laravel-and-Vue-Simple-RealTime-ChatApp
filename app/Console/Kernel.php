@@ -35,9 +35,9 @@ class Kernel extends ConsoleKernel
                 'text' => 'Saat - '.now()->format('H:i:s'),
                 'user_id' => User::where('email', 'system@system.com')->first()->id
             ]);
-        })
-            ->call('App\Http\Controllers\NotificationController@index')
-            ->everyMinute();
+        })->everyMinute();
+
+        $schedule->call('App\Http\Controllers\NotificationController@index')->everyMinute();
 
     }
 
