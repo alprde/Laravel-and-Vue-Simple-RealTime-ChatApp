@@ -73,24 +73,16 @@ __webpack_require__.r(__webpack_exports__);
     getMessages: function getMessages() {
       var _this2 = this;
       axios.get('/messages/all').then(function (response) {
-        console.log(response.data);
         _this2.messages = response.data.data;
       });
     }
   },
   sockets: {
-    users: function users(data) {
-      // this.users = data;
-      console.log('socket data: ', data);
-    },
     messages: function messages(data) {
-      // this.messages = data;
-      console.log('socket messages: ', data);
       this.getMessages();
     }
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
     this.getMessages();
   }
 });

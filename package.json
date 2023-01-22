@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "fs": "^0.0.1-security",
+        "redis": "^4.5.1",
         "socket.io": "^4.5.4",
         "socket.io-client": "^4.5.4",
         "vue-socket.io": "^3.0.10"

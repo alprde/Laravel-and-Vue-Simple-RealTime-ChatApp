@@ -6,7 +6,7 @@ use App\Message;
 use App\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Redis;
 
 class Kernel extends ConsoleKernel
 {
@@ -35,9 +35,9 @@ class Kernel extends ConsoleKernel
                 'text' => 'Saat - '.now()->format('H:i:s'),
                 'user_id' => User::where('email', 'system@system.com')->first()->id
             ]);
-        })->everyMinute();
 
-        $schedule->exec('wget '.url('/notification'))->everyMinute();
+            Redis::publish('notification-channel', json_encode(['name' => 'system', 'message' => 'auto notification']));
+        })->everyMinute();
     }
 
     /**
