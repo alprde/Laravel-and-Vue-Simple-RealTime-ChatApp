@@ -30,13 +30,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/assets/js/bootstrap.js");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var socketConnection = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_1__["default"])("".concat(window.location.origin, ":3000"));
+var baseURL = location.protocol + '//' + location.hostname;
+var socketConnection = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_1__["default"])("".concat(baseURL, ":").concat("3000"));
 vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(new (vue_socket_io__WEBPACK_IMPORTED_MODULE_0___default())({
   connection: socketConnection
 }));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component("NotificationComponent", function () {
-  return __webpack_require__.e(/*! import() */ "resources_assets_js_pages_NotificationComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/NotificationComponent.vue */ "./resources/assets/js/pages/NotificationComponent.vue"));
-});
 vue__WEBPACK_IMPORTED_MODULE_2__["default"].component("MessagesComponent", function () {
   return __webpack_require__.e(/*! import() */ "resources_assets_js_pages_MessagesComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/MessagesComponent.vue */ "./resources/assets/js/pages/MessagesComponent.vue"));
 });
@@ -52322,7 +52320,7 @@ function hasBinary(obj, toJSON) {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_assets_js_pages_NotificationComponent_vue":1,"resources_assets_js_pages_MessagesComponent_vue":1,"resources_assets_js_components_MessageComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_assets_js_pages_MessagesComponent_vue":1,"resources_assets_js_components_MessageComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

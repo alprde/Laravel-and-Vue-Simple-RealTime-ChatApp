@@ -17,13 +17,13 @@ import SocketIO from 'socket.io-client';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const socketConnection = SocketIO(`${window.location.origin}:3000`);
+const baseURL = location.protocol + '//' + location.hostname;
+const socketConnection = SocketIO(`${baseURL}:${process.env.MIX_SOCKET_PORT}`);
 
 Vue.use(new VueSocketIO({
     connection: socketConnection
 }));
 
-Vue.component("NotificationComponent", () => import("./pages/NotificationComponent.vue"));
 Vue.component("MessagesComponent", () => import("./pages/MessagesComponent.vue"));
 Vue.component("MessageComponent", () => import("./components/MessageComponent.vue"));
 

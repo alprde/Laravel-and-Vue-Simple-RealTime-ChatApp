@@ -1,16 +1,25 @@
-// const http = require('http').createServer();
+require('dotenv').config()
 
-var https = require('https'),
-    fs = require('fs');
+const fs = require('fs');
 
-var options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/mwijkaasmdelvjvf.tzty.net/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/mwijkaasmdelvjvf.tzty.net/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/mwijkaasmdelvjvf.tzty.net/chain.pem')
-};
+let https, options;
+
+if(fs.existsSync(process.env.SSL_PATH+'privkey.pem')){
+    https = require('https');
+
+    options = {
+        key: fs.readFileSync(process.env.SSL_PATH+'privkey.pem'),
+        cert: fs.readFileSync(process.env.SSL_PATH+'cert.pem'),
+        ca: fs.readFileSync(process.env.SSL_PATH+'fullchain.pem')
+    };
+}else{
+    https = require('http');
+
+    options = {};
+}
 
 
-var app = https.createServer(options);
+const app = https.createServer(options);
 
 const io = require('socket.io')(app, {
     cors: {
@@ -25,7 +34,7 @@ const subscriber = client.duplicate();
 
 subscriber.connect();
 
-app.listen(3000);
+app.listen(process.env.MIX_SOCKET_PORT);
 let users = [];
 let messages = [];
 
