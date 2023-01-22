@@ -20,13 +20,17 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('messages');
+        return view('messages.messages');
     }
 
     public function all(){
         return response()->json([
             "data" => Message::all()
         ]);
+    }
+
+    public function sendScheduleMessage(){
+        return view('messages.notification');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Message;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -26,6 +27,14 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->call(function () {
+            Message::create([
+                'text' => 'Saat'.now()->format('H:i:s'),
+                'user_id' => 0
+            ]);
+        })->everyMinute()
+        ->thenPing('/messages/notification');
     }
 
     /**
