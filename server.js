@@ -17,7 +17,7 @@ const io = require('socket.io')(app, {
         origin: '*',
     }
 });
-http.listen(3000);
+app.listen(3000);
 let users = [];
 let messages = [];
 io.on('connection', socket => {
