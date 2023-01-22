@@ -25,13 +25,16 @@ app.listen(3000);
 let users = [];
 let messages = [];
 
-client.on('message', function(channel, data) {
-    console.log(`channel: ${channel} message: ${data}`);
+client.on('error', error => {
+    console.log(error)
+})
 
-    // io.emit(channel, data);
-});
 io.on('connection', socket => {
+    client.on('message', function(channel, data) {
+        console.log(`channel: ${channel} message: ${data}`);
 
+        io.emit(channel, data);
+    });
 
     socket.on('new_user', (name) => {
         users.push({
