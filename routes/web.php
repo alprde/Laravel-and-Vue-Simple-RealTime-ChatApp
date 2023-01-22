@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('/', 'MessageController@index');
 
 Auth::routes();
 
