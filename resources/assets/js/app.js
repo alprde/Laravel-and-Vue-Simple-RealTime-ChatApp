@@ -23,6 +23,7 @@ Vue.use(new VueSocketIO({
     connection: socketConnection
 }));
 
+Vue.component("NotificationComponent", () => import("./pages/NotificationComponent.vue"));
 Vue.component("MessagesComponent", () => import("./pages/MessagesComponent.vue"));
 Vue.component("MessageComponent", () => import("./components/MessageComponent.vue"));
 
