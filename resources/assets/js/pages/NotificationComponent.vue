@@ -10,6 +10,8 @@
           }
         },
         mounted() {
+          console.log('Mounted')
+
           this.$socket.emit('new_message', {
             name: 'System',
             message: this.message
