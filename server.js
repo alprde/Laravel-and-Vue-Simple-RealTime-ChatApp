@@ -29,7 +29,7 @@ app.listen(3000);
 let users = [];
 let messages = [];
 
-await subscriber.subscribe('notification-channel', (message) => {
+subscriber.subscribe('notification-channel', (message) => {
     console.log(message); // 'message'
 });
 
