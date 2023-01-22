@@ -1,14 +1,9 @@
 <template>
-  <div></div>
+
 </template>
 
 <script>
     export default {
-        sockets: {
-          messages(data) {
-            console.log('message: ', data)
-          }
-        },
         mounted() {
           console.log('Mounted')
 
