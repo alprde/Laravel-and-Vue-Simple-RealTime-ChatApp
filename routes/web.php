@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('messages')->group(function(){
     Route::resource('/', 'MessageController');
     Route::get('/all', 'MessageController@all')->name('all_messages');
-    Route::get('/notification', 'MessageController@sendScheduleMessage')->name('notification');
 });
+
+Route::get('/notification', 'NotificationController@index')->name('notification');
 

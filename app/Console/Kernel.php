@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
                 'user_id' => User::where('email', 'system@system.com')->first()->id
             ]);
         })->everyMinute()
-        ->thenPing(url('/messages/notification'));
+        ->thenPing(url('/notification'));
     }
 
     /**

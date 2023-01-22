@@ -29,10 +29,6 @@ class MessageController extends Controller
         ]);
     }
 
-    public function sendScheduleMessage(){
-        return view('messages.notification');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
