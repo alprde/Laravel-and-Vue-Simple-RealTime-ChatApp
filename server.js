@@ -1,5 +1,18 @@
-const http = require('http').createServer();
-const io = require('socket.io')(http, {
+// const http = require('http').createServer();
+
+var https = require('https'),
+    fs = require('fs');
+
+var options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/mwijkaasmdelvjvf.tzty.net/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/mwijkaasmdelvjvf.tzty.net/cert.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/mwijkaasmdelvjvf.tzty.net/chain.pem')
+};
+
+
+var app = https.createServer(options);
+
+const io = require('socket.io')(app, {
     cors: {
         origin: '*',
     }
