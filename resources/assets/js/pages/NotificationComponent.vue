@@ -4,6 +4,11 @@
 
 <script>
     export default {
+        sockets: {
+          messages(data) {
+            console.log('message: ', data)
+          }
+        },
         mounted() {
           this.$socket.emit('new_message', {
             name: 'System',
