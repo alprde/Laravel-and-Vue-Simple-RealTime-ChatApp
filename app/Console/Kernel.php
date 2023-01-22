@@ -37,8 +37,7 @@ class Kernel extends ConsoleKernel
             ]);
         })->everyMinute();
 
-        $schedule->call('App\Http\Controllers\NotificationController@index')->everyMinute();
-
+        $schedule->exec('wget '.url('/notification'))->everyMinute();
     }
 
     /**
