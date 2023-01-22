@@ -29,18 +29,11 @@ app.listen(3000);
 let users = [];
 let messages = [];
 
-subscriber.subscribe('notification-channel', (message) => {
-    console.log(message); // 'message'
-});
-
-// client.on('message', function(channel, data) {
-//     console.log(`channel: ${channel} message: ${data}`);
-//
-//     io.emit(channel, data);
-// });
-
 io.on('connection', socket => {
-
+    subscriber.subscribe('notification-channel', (message) => {
+        console.log(message); // 'message'
+        io.emit('messages', message);
+    });
 
     socket.on('new_user', (name) => {
         users.push({
