@@ -17,7 +17,7 @@ import SocketIO from 'socket.io-client';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const socketConnection = SocketIO('http://127.0.0.1:3000');
+const socketConnection = SocketIO(`${window.location.origin}:3000`);
 
 Vue.use(new VueSocketIO({
     connection: socketConnection
