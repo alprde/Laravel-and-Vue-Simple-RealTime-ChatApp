@@ -6,6 +6,7 @@ use App\Message;
 use App\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\URL;
 
 class Kernel extends ConsoleKernel
 {
@@ -31,11 +32,11 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             Message::create([
-                'text' => 'Saat'.now()->format('H:i:s'),
+                'text' => 'Saat - '.now()->format('H:i:s'),
                 'user_id' => User::where('email', 'system@system.com')->first()->id
             ]);
         })->everyMinute()
-        ->thenPing('/messages/notification');
+        ->thenPing(URL::to('/messages/notification'));
     }
 
     /**
