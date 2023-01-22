@@ -23,7 +23,7 @@ const client = redis.createClient();
 
 const subscriber = client.duplicate();
 
-await subscriber.connect();
+subscriber.connect();
 
 app.listen(3000);
 let users = [];
