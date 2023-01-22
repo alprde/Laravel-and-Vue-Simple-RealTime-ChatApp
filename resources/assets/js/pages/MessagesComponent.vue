@@ -62,25 +62,16 @@
             getMessages(){
                 axios.get('/messages/all')
                     .then(response => {
-                      console.log(response.data)
                         this.messages = response.data.data;
                     })
             }
         },
         sockets: {
-          users(data) {
-            // this.users = data;
-            console.log('socket data: ', data)
-          },
           messages(data) {
-            // this.messages = data;
-            console.log('socket messages: ', data)
             this.getMessages()
           }
         },
         mounted() {
-            console.log('Component mounted.')
-
             this.getMessages();
         }
     }
